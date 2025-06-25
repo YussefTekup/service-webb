@@ -1,98 +1,372 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🍽️ Restaurant Management System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A comprehensive restaurant management system built with **NestJS**, **GraphQL**, **TypeORM**, **MySQL**, and **Swagger**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Features
 
-## Description
+- **GraphQL API** with Apollo Server
+- **REST API** with Swagger documentation
+- **MySQL Database** with TypeORM
+- **Real-time** GraphQL subscriptions
+- **Complete Restaurant Management**:
+  - Menu management (categories, items, pricing)
+  - Order processing and tracking
+  - Table management
+  - Staff management
+  - Customer management
+  - Inventory tracking
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🛠️ Technologies Used
 
-## Project setup
+- **Backend Framework**: NestJS
+- **Database**: MySQL
+- **ORM**: TypeORM
+- **GraphQL**: Apollo Server
+- **API Documentation**: Swagger/OpenAPI
+- **Validation**: class-validator
+- **Environment**: Node.js + TypeScript
 
-```bash
-$ yarn install
-```
+## 📋 Prerequisites
 
-## Compile and run the project
+- Node.js (v16 or higher)
+- MySQL (v8 or higher)
+- Yarn or npm
 
-```bash
-# development
-$ yarn run start
+## ⚡ Quick Start
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
-
-## Run tests
+### 1. Clone and Install
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+git clone <your-repo-url>
+cd service-webb
+yarn install
 ```
 
-## Deployment
+### 2. Database Setup
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Create a MySQL database:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+```sql
+CREATE DATABASE restaurant_db;
+```
+
+### 3. Environment Configuration
+
+Update the `.env` file with your database credentials:
+
+```env
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=your_password
+DB_DATABASE=restaurant_db
+
+# Application Configuration
+PORT=3000
+NODE_ENV=development
+
+# JWT Configuration (for future authentication)
+JWT_SECRET=your-super-secret-jwt-key-change-in-production
+JWT_EXPIRES_IN=24h
+```
+
+### 4. Start the Application
 
 ```bash
-$ yarn install -g mau
-$ mau deploy
+# Development mode
+yarn start:dev
+
+# Production mode
+yarn build
+yarn start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+The application will be running on:
 
-## Resources
+- **Main App**: http://localhost:3000
+- **GraphQL Playground**: http://localhost:3000/graphql
+- **Swagger Documentation**: http://localhost:3000/api
 
-Check out a few resources that may come in handy when working with NestJS:
+## 🎯 API Endpoints
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### REST Endpoints
 
-## Support
+#### Categories
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- `GET /categories` - Get all categories
+- `GET /categories/active` - Get active categories
+- `GET /categories/:id` - Get category by ID
+- `POST /categories` - Create new category
+- `PATCH /categories/:id` - Update category
+- `DELETE /categories/:id` - Delete category
 
-## Stay in touch
+### GraphQL Queries & Mutations
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Categories
 
-## License
+**Queries:**
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```graphql
+# Get all categories
+query {
+  categories {
+    id
+    name
+    description
+    imageUrl
+    isActive
+    menuItems {
+      id
+      name
+      price
+    }
+  }
+}
+
+# Get category by ID
+query {
+  category(id: "uuid-here") {
+    id
+    name
+    description
+    menuItems {
+      id
+      name
+      price
+      status
+    }
+  }
+}
+```
+
+**Mutations:**
+
+```graphql
+# Create category
+mutation {
+  createCategory(
+    createCategoryInput: {
+      name: "Appetizers"
+      description: "Delicious starters"
+      imageUrl: "https://example.com/appetizers.jpg"
+    }
+  ) {
+    id
+    name
+    description
+  }
+}
+
+# Update category
+mutation {
+  updateCategory(
+    id: "uuid-here"
+    updateCategoryInput: { name: "Updated Appetizers", isActive: true }
+  ) {
+    id
+    name
+    isActive
+  }
+}
+```
+
+#### Menu Items
+
+**Queries:**
+
+```graphql
+# Get all menu items
+query {
+  menuItems {
+    id
+    name
+    description
+    price
+    preparationTime
+    status
+    category {
+      name
+    }
+  }
+}
+
+# Get menu items by category
+query {
+  menuItemsByCategory(categoryId: "uuid-here") {
+    id
+    name
+    price
+    description
+  }
+}
+
+# Search menu items
+query {
+  searchMenuItems(searchTerm: "salmon") {
+    id
+    name
+    description
+    price
+  }
+}
+```
+
+**Mutations:**
+
+```graphql
+# Create menu item
+mutation {
+  createMenuItem(
+    createMenuItemInput: {
+      name: "Grilled Salmon"
+      description: "Fresh Atlantic salmon"
+      price: 24.99
+      categoryId: "uuid-here"
+      preparationTime: 20
+      status: AVAILABLE
+    }
+  ) {
+    id
+    name
+    price
+  }
+}
+```
+
+## 🗃️ Database Schema
+
+### Core Entities
+
+1. **Categories** - Menu categories (Appetizers, Main Courses, etc.)
+2. **MenuItems** - Individual menu items with pricing and details
+3. **Orders** - Customer orders with status tracking
+4. **OrderItems** - Junction table for order-menu item relationships
+5. **Tables** - Restaurant table management
+6. **Staff** - Employee management
+7. **Customers** - Customer information and history
+
+### Entity Relationships
+
+```
+Category (1) -> (N) MenuItem
+Order (1) -> (N) OrderItem
+MenuItem (1) -> (N) OrderItem
+Customer (1) -> (N) Order
+Table (1) -> (N) Order
+Staff (1) -> (N) Order (as server)
+```
+
+## 🔧 Development
+
+### Database Seeding
+
+To populate the database with sample data:
+
+```typescript
+// This is a conceptual example - you can implement a seeder command
+import { DatabaseSeeder } from './src/seeds/database.seed';
+
+// Run the seeder to populate with sample data:
+// - Categories (Appetizers, Main Courses, Desserts, Beverages)
+// - Menu Items (Various dishes and drinks)
+// - Tables (8 tables with different capacities)
+// - Staff (Manager, Waiters, Chef)
+// - Customers (Sample customer profiles)
+```
+
+### Project Structure
+
+```
+src/
+├── entities/           # TypeORM entities
+│   ├── base.entity.ts
+│   ├── category.entity.ts
+│   ├── menu-item.entity.ts
+│   ├── order.entity.ts
+│   ├── order-item.entity.ts
+│   ├── table.entity.ts
+│   ├── staff.entity.ts
+│   └── customer.entity.ts
+├── modules/            # Feature modules
+│   ├── category/
+│   ├── menu/
+│   ├── order/
+│   ├── table/
+│   ├── staff/
+│   └── customer/
+├── dto/                # Data Transfer Objects
+└── seeds/              # Database seeders
+```
+
+## 📱 Example Use Cases
+
+### 1. Restaurant Menu Management
+
+- Create categories and menu items
+- Update pricing and availability
+- Track preparation times
+
+### 2. Order Processing
+
+- Place orders for dine-in, takeaway, or delivery
+- Track order status from pending to completed
+- Calculate totals with tax and tips
+
+### 3. Table Management
+
+- Track table availability and capacity
+- Assign tables to orders
+- Manage reservations
+
+### 4. Staff Management
+
+- Manage employee information
+- Track roles and hourly rates
+- Assign servers to orders
+
+## 🔮 Future Enhancements
+
+- [ ] **Authentication & Authorization** (JWT-based)
+- [ ] **Real-time Order Updates** (WebSocket subscriptions)
+- [ ] **Payment Integration** (Stripe, PayPal)
+- [ ] **Inventory Management** (Stock tracking)
+- [ ] **Reporting & Analytics** (Sales reports, popular items)
+- [ ] **Multi-location Support** (Restaurant chains)
+- [ ] **Mobile App API** (React Native/Flutter support)
+- [ ] **Kitchen Display System** (Real-time order tracking)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Your Name**
+
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+
+---
+
+### 🎓 Academic Project Notes
+
+This project demonstrates:
+
+- **Modern Backend Architecture** with NestJS
+- **Database Design** with proper relationships and constraints
+- **API Design** with both REST and GraphQL approaches
+- **Documentation** with Swagger and GraphQL introspection
+- **Type Safety** with TypeScript throughout
+- **Validation** with class-validator decorators
+- **Clean Code** with proper separation of concerns
+
+Perfect for learning modern web development practices and building portfolio projects!

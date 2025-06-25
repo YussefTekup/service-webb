@@ -1,0 +1,163 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  createdAt: DateTime!
+  description: String
+  id: ID!
+  imageUrl: String
+  isActive: Boolean!
+  menuItems: [MenuItem!]!
+  name: String!
+  updatedAt: DateTime!
+}
+
+input CreateCategoryInput {
+  description: String
+  imageUrl: String
+  name: String!
+}
+
+input CreateMenuItemInput {
+  categoryId: String!
+  description: String
+  imageUrl: String
+  name: String!
+  preparationTime: Int
+  price: Float!
+  status: String
+}
+
+type Customer {
+  address: String
+  createdAt: DateTime!
+  dateOfBirth: DateTime
+  email: String
+  firstName: String!
+  fullName: String!
+  id: ID!
+  isActive: Boolean!
+  lastName: String!
+  orders: [Order!]!
+  phone: String
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MenuItem {
+  category: Category!
+  createdAt: DateTime!
+  description: String
+  id: ID!
+  imageUrl: String
+  isActive: Boolean!
+  name: String!
+  orderItems: [OrderItem!]!
+  preparationTime: Int
+  price: Float!
+  status: String!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  createMenuItem(createMenuItemInput: CreateMenuItemInput!): MenuItem!
+  removeCategory(id: ID!): Boolean!
+  removeMenuItem(id: ID!): Boolean!
+  updateCategory(id: ID!, updateCategoryInput: UpdateCategoryInput!): Category!
+  updateMenuItem(id: ID!, updateMenuItemInput: UpdateMenuItemInput!): MenuItem!
+}
+
+type Order {
+  createdAt: DateTime!
+  customer: Customer
+  id: ID!
+  orderItems: [OrderItem!]!
+  orderNumber: String!
+  orderTime: DateTime
+  servedTime: DateTime
+  server: Staff
+  specialInstructions: String
+  status: String!
+  subtotal: Float!
+  table: Table
+  tax: Float!
+  tip: Float!
+  total: Float!
+  type: String!
+  updatedAt: DateTime!
+}
+
+type OrderItem {
+  createdAt: DateTime!
+  id: ID!
+  menuItem: MenuItem!
+  order: Order!
+  quantity: Int!
+  specialInstructions: String
+  totalPrice: Float!
+  unitPrice: Float!
+  updatedAt: DateTime!
+}
+
+type Query {
+  activeCategories: [Category!]!
+  availableMenuItems: [MenuItem!]!
+  categories: [Category!]!
+  category(id: ID!): Category!
+  menuItem(id: ID!): MenuItem!
+  menuItems: [MenuItem!]!
+  menuItemsByCategory(categoryId: ID!): [MenuItem!]!
+  searchMenuItems(searchTerm: String!): [MenuItem!]!
+}
+
+type Staff {
+  createdAt: DateTime!
+  email: String!
+  firstName: String!
+  fullName: String!
+  hireDate: DateTime
+  hourlyRate: Float
+  id: ID!
+  lastName: String!
+  orders: [Order!]!
+  phone: String
+  role: String!
+  status: String!
+  updatedAt: DateTime!
+}
+
+type Table {
+  capacity: Int!
+  createdAt: DateTime!
+  id: ID!
+  isActive: Boolean!
+  location: String
+  number: String!
+  orders: [Order!]!
+  status: String!
+  updatedAt: DateTime!
+}
+
+input UpdateCategoryInput {
+  description: String
+  imageUrl: String
+  isActive: Boolean
+  name: String
+}
+
+input UpdateMenuItemInput {
+  categoryId: String
+  description: String
+  id: ID!
+  imageUrl: String
+  name: String
+  preparationTime: Int
+  price: Float
+  status: String
+}
